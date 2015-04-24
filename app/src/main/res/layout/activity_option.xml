@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="字型顏色"
+        android:id="@+id/tv_color"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="22sp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spn_color"
+        android:layout_below="@+id/tv_color"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="字型大小"
+        android:id="@+id/tv_size"
+        android:layout_below="@+id/spn_color"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="41dp"
+        android:textSize="22sp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spn_size"
+        android:layout_below="@+id/tv_size"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="確定"
+        android:id="@+id/btn_submit"
+        android:layout_below="@+id/spn_size"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="102dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="回復預設"
+        android:id="@+id/btn_default"
+        android:layout_alignTop="@+id/btn_submit"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp" />
+</RelativeLayout>
