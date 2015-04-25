@@ -17,28 +17,26 @@ public class OptionActivity extends Activity {
     private Button btn_submit, btn_default;
     private Spinner spn_color, spn_size;
     private String intent_color, intent_size;
-    private final static String DEFAULT_color = "黑色";
-    private final static String DEFAULT_size = "16sp";
-    private final static String PREF_NAME = "color_size";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        intent到這個頁面設定Layout
         setContentView(R.layout.activity_option);
         findViews();
-
     }
 
     private void findViews() {
         btn_submit = (Button) findViewById(R.id.btn_submit);
         btn_default = (Button) findViewById(R.id.btn_default);
-
+        final Intent intent = new Intent();
+        final Bundle bundle = new Bundle();
+//          點擊確定時將user選的項目包裝起來intent回傳回去並關閉該頁面
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                Bundle bundle = new Bundle();
+//              將使用者在spinner所選擇回傳的intent兩個字串放入bundle
                 bundle.putString("color", intent_color);
                 bundle.putString("size", intent_size);
                 intent.putExtras(bundle);
@@ -47,15 +45,12 @@ public class OptionActivity extends Activity {
             }
         });
 
-
+//         利用預設的DEFAULT
         btn_default.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadPref();
-                Intent intent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putString("color", intent_color);
-                bundle.putString("size", intent_size);
+                bundle.putString("color", "黑色");
+                bundle.putString("size", "16");
                 intent.putExtras(bundle);
                 setResult(RESULT_OK, intent);
                 finish();
@@ -80,7 +75,7 @@ public class OptionActivity extends Activity {
     }
 
 
-    //    下拉式選單監聽器
+    //---------------------------------下拉式選單監聽器-------------------------------
     Spinner.OnItemSelectedListener listener_color = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -109,16 +104,5 @@ public class OptionActivity extends Activity {
         }
     };
 
-
-
-    private void loadPref() {
-        SharedPreferences preferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
-        String color = preferences.getString("color", DEFAULT_color);
-        intent_color = color;
-        String size = preferences.getString("size", DEFAULT_size);
-        intent_size = size;
-
-
-    }
 
 }
